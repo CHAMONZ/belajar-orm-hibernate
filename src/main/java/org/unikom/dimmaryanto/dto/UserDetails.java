@@ -1,8 +1,5 @@
 package org.unikom.dimmaryanto.dto;
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,12 +17,10 @@ public class UserDetails {
 
     private String username;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ADDRESS",
             joinColumns = @JoinColumn(name = "USER_ID")
     )
-    @SequenceGenerator(name = "seq-gen", sequenceName = "sequance_generator")
-    @CollectionId(columns = {@Column(name = "ADDRESS_ID")}, type = @Type(type = "long"), generator = "seq-gen")
     private Collection<Address> listofAddress = new ArrayList<Address>();
 
     public Collection<Address> getListofAddress() {
