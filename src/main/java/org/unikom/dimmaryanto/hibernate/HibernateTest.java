@@ -4,6 +4,7 @@ package org.unikom.dimmaryanto.hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.unikom.dimmaryanto.dto.Address;
 import org.unikom.dimmaryanto.dto.UserDetails;
 
 import java.util.Date;
@@ -16,13 +17,13 @@ public class HibernateTest {
         UserDetails aUser = new UserDetails();
 
         aUser.setUsername("Riansyah Permana Putra");
-        aUser.setAddress("Jl.Cikutra");
+        aUser.setAddress(new Address("Jl.Cikutra", "Indonesia", "Bandung", "40526"));
         aUser.setJoinedDate(new Date());
 
         UserDetails aUser2 = new UserDetails();
 
         aUser2.setUsername("Dimas Maryanto");
-        aUser2.setAddress("Jl.Cinunuk");
+        aUser2.setAddress(new Address("Jl.Bukit Indah No B8", "Indonesia", "Bandung", "40524"));
         aUser2.setJoinedDate(new Date());
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
