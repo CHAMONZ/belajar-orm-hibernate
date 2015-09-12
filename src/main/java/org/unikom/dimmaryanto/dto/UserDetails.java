@@ -1,21 +1,25 @@
 package org.unikom.dimmaryanto.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by dimmaryanto on 9/12/15.
  */
-@Entity(name = "USER_DETAILS")
+@Entity
+@Table(name = "USER_DETAILS")
 public class UserDetails {
 
     @Id
-    @Column(name = "user_Id")
     private int id;
 
-    @Column(name = "user_name")
     private String username;
+
+    @Temporal(TemporalType.DATE)
+    private Date joinedDate;
+
+    @Lob
+    private String address;
 
     public int getId() {
         return id;
@@ -31,5 +35,21 @@ public class UserDetails {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Date getJoinedDate() {
+        return joinedDate;
+    }
+
+    public void setJoinedDate(Date joinedDate) {
+        this.joinedDate = joinedDate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
