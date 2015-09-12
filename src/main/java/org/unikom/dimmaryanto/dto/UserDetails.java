@@ -1,8 +1,11 @@
 package org.unikom.dimmaryanto.dto;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by dimmaryanto on 9/12/15.
@@ -21,13 +24,15 @@ public class UserDetails {
     @JoinTable(name = "USER_ADDRESS",
             joinColumns = @JoinColumn(name = "USER_ID")
     )
-    private Set<Address> listofAddress = new HashSet();
+    @SequenceGenerator(name = "seq-gen", sequenceName = "sequance_generator")
+    @CollectionId(columns = {@Column(name = "ADDRESS_ID")}, type = @Type(type = "long"), generator = "seq-gen")
+    private Collection<Address> listofAddress = new ArrayList<Address>();
 
-    public Set<Address> getListofAddress() {
+    public Collection<Address> getListofAddress() {
         return listofAddress;
     }
 
-    public void setListofAddress(Set<Address> listofAddress) {
+    public void setListofAddress(Collection<Address> listofAddress) {
         this.listofAddress = listofAddress;
     }
 
@@ -46,7 +51,6 @@ public class UserDetails {
     public void setUsername(String username) {
         this.username = username;
     }
-
 
 
 }
