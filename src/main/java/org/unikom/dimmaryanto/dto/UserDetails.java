@@ -1,12 +1,17 @@
 package org.unikom.dimmaryanto.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by dimmaryanto on 9/12/15.
  */
-
+@Entity
 public class UserDetails {
 
+    @Id
     private int id;
+
     private String username;
 
     public int getId() {
