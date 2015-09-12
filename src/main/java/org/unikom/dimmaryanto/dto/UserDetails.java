@@ -18,6 +18,7 @@ public class UserDetails {
     private String username;
 
     @ElementCollection
+    @JoinTable(name = "USER_ADDRESS")
     private Set<Address> listofAddress = new HashSet();
 
     public Set<Address> getListofAddress() {
