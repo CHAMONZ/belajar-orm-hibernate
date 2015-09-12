@@ -18,7 +18,9 @@ public class UserDetails {
     private String username;
 
     @ElementCollection
-    @JoinTable(name = "USER_ADDRESS")
+    @JoinTable(name = "USER_ADDRESS",
+            joinColumns = @JoinColumn(name = "USER_ID")
+    )
     private Set<Address> listofAddress = new HashSet();
 
     public Set<Address> getListofAddress() {
