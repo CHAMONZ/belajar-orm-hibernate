@@ -19,8 +19,16 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date joinedDate;
 
-    @Lob
-    private String address;
+    @Embedded
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public int getId() {
         return id;
@@ -46,11 +54,5 @@ public class UserDetails {
         this.joinedDate = joinedDate;
     }
 
-    public String getAddress() {
-        return address;
-    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }
