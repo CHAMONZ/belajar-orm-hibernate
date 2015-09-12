@@ -7,9 +7,6 @@ import org.hibernate.cfg.Configuration;
 import org.unikom.dimmaryanto.dto.Address;
 import org.unikom.dimmaryanto.dto.UserDetails;
 
-import java.util.Collection;
-import java.util.Iterator;
-
 /**
  * Created by dimmaryanto on 9/12/15.
  */
@@ -42,21 +39,6 @@ public class HibernateTest {
         session.beginTransaction().commit();
         session.close();
 
-        aUser = null;
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        aUser = (UserDetails) session.get(UserDetails.class, 1);
 
-        session.close();
-
-        Collection<Address> list = aUser.getListofAddress();
-
-        Iterator iterator = list.iterator();
-        while (iterator.hasNext()) {
-            Address address2 = (Address) iterator.next();
-            System.out.println(address2.getStreet());
-        }
-
-        sessionFactory.close();
     }
 }
