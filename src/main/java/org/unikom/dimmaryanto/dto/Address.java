@@ -1,5 +1,6 @@
 package org.unikom.dimmaryanto.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
@@ -8,9 +9,16 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Address {
 
+    @Column(name = "STREET_ADDRES")
     private String street;
+
+    @Column(name = "STATE")
     private String state;
+
+    @Column(name = "CITY_NAME")
     private String city;
+
+    @Column(name = "PIN_CODE")
     private String pincode;
 
     public Address() {

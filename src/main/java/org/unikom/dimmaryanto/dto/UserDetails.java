@@ -20,14 +20,31 @@ public class UserDetails {
     private Date joinedDate;
 
     @Embedded
-    private Address address;
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "HOME_STREET_NAME")),
+            @AttributeOverride(name = "state", column = @Column(name = "HOME_STATE")),
+            @AttributeOverride(name = "city", column = @Column(name = "HOME_CITY")),
+            @AttributeOverride(name = "pincode", column = @Column(name = "HOME_PIN_CODE")),
+    })
+    private Address homeAddress;
 
-    public Address getAddress() {
-        return address;
+    @Embedded
+    private Address officeAddress;
+
+    public Address getOfficeAddress() {
+        return officeAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setOfficeAddress(Address officeAddress) {
+        this.officeAddress = officeAddress;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
     public int getId() {

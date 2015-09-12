@@ -17,21 +17,16 @@ public class HibernateTest {
         UserDetails aUser = new UserDetails();
 
         aUser.setUsername("Riansyah Permana Putra");
-        aUser.setAddress(new Address("Jl.Cikutra", "Indonesia", "Bandung", "40526"));
+        aUser.setHomeAddress(new Address("Jl.Cikutra", "Indonesia", "Bandung", "40526"));
         aUser.setJoinedDate(new Date());
+        aUser.setOfficeAddress(new Address("Jl.Bukit Indah No B8", "Indonesia", "Bandung", "40524"));
 
-        UserDetails aUser2 = new UserDetails();
-
-        aUser2.setUsername("Dimas Maryanto");
-        aUser2.setAddress(new Address("Jl.Bukit Indah No B8", "Indonesia", "Bandung", "40524"));
-        aUser2.setJoinedDate(new Date());
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
         session.save(aUser);
-        session.save(aUser2);
         session.beginTransaction().commit();
         session.close();
 
