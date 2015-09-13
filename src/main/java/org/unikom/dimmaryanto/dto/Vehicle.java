@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by dimmaryanto on 9/13/15.
  */
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Vehicle {
 
     @Id
