@@ -5,6 +5,8 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.unikom.dimmaryanto.dto.UserDetails;
 
 import java.util.Iterator;
@@ -23,6 +25,7 @@ public class HibernateTest {
         session.beginTransaction();
 
         Criteria criteria = session.createCriteria(UserDetails.class);
+        criteria.add(Restrictions.like("username", "2", MatchMode.ANYWHERE));
 
         List<UserDetails> listOfUserDetailses = criteria.list();
 
