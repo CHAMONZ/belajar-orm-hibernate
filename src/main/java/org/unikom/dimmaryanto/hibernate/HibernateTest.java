@@ -24,7 +24,11 @@ public class HibernateTest {
         session.beginTransaction();
 
         Criteria criteria = session.createCriteria(UserDetails.class);
-        criteria.add(Restrictions.eq("username", "User 6"));
+        //le == lebih rendah sama dengan
+        //lt == lebih rendah
+        //ge == lebih besar sama dengan
+        //gt == lebih besar
+        criteria.add(Restrictions.eq("username", "User 6")).add(Restrictions.gt("id", 23));
 
         List<UserDetails> listOfUserDetailses = criteria.list();
 
