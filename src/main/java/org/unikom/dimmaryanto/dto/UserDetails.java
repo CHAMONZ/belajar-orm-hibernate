@@ -17,8 +17,7 @@ public class UserDetails {
 
     private String username;
 
-    @OneToMany
-    @JoinTable(name = "USER_VEHICLE", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "VEHICLE_ID"))
+    @ManyToMany
     private Collection<Vehicle> vehicleId = new ArrayList<Vehicle>();
 
     public Collection<Vehicle> getVehicleId() {
@@ -28,6 +27,7 @@ public class UserDetails {
     public void setVehicleId(Collection<Vehicle> vehicleId) {
         this.vehicleId = vehicleId;
     }
+
 
     public int getId() {
         return id;

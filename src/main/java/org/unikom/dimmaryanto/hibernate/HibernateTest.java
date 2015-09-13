@@ -25,6 +25,9 @@ public class HibernateTest {
         aMotor2.setVehicleName("Honda CBR");
         aUser.getVehicleId().add(aMotor2);
 
+        aMotor.getUserList().add(aUser);
+        aMotor2.getUserList().add(aUser);
+
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
 
