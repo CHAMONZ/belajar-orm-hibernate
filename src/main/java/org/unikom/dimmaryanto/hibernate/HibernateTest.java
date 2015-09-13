@@ -5,7 +5,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 import org.unikom.dimmaryanto.dto.UserDetails;
 
 import java.util.Iterator;
@@ -24,11 +23,6 @@ public class HibernateTest {
         session.beginTransaction();
 
         Criteria criteria = session.createCriteria(UserDetails.class);
-        //le == lebih rendah sama dengan
-        //lt == lebih rendah
-        //ge == lebih besar sama dengan
-        //gt == lebih besar
-        criteria.add(Restrictions.eq("username", "User 6")).add(Restrictions.gt("id", 23));
 
         List<UserDetails> listOfUserDetailses = criteria.list();
 
