@@ -23,7 +23,8 @@ public class HibernateTest {
         session.beginTransaction();
 
         //"from UserDetails" UserDetails -> bukan merupakan nama Table tetapi nama Object Class Entity
-        Query query = session.createQuery("from UserDetails");
+        //"from UserDetails where id " id -> bukan merukanan nama column di dalam table tetapi nama property Class dalam Entity UserDetails
+        Query query = session.createQuery("from UserDetails where id > 10");
         List<UserDetails> users = query.list();
 
         session.beginTransaction().commit();
