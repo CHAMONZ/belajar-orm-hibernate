@@ -1,14 +1,14 @@
 package org.unikom.dimmaryanto.dto;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by dimmaryanto on 9/12/15.
  */
 @Entity
-@Table(name = "USER_DETAILS")
 public class UserDetails {
 
     @Id
@@ -16,17 +16,6 @@ public class UserDetails {
     private int id;
 
     private String username;
-
-    @ManyToMany
-    private Collection<Vehicle> vehicleId = new ArrayList<Vehicle>();
-
-    public Collection<Vehicle> getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(Collection<Vehicle> vehicleId) {
-        this.vehicleId = vehicleId;
-    }
 
 
     public int getId() {
