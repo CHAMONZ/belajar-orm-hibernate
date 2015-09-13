@@ -22,7 +22,9 @@ public class HibernateTest {
         session.beginTransaction();
 
         //"from UserDetails" UserDetails -> bukan merupakan nama Table tetapi nama Object Class Entity
-        Query query = session.createQuery("select username from UserDetails");
+        Query query = session.createQuery("select username from UserDetails where id > ? and username like ?");
+        query.setString(1, "User ke 5");
+        query.setInteger(0, 6);
 
         query.setFirstResult(5);
         query.setMaxResults(4);
