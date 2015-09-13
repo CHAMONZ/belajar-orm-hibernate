@@ -4,7 +4,6 @@ package org.unikom.dimmaryanto.hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.unikom.dimmaryanto.dto.UserDetails;
 
 /**
  * Created by dimmaryanto on 9/12/15.
@@ -18,9 +17,6 @@ public class HibernateTest {
 
         session.beginTransaction();
 
-        UserDetails aUserDetails = session.get(UserDetails.class, 5);
-        aUserDetails.setUsername("Dimas Maryanto");
-        session.update(aUserDetails);
 
         session.beginTransaction().commit();
         session.close();
