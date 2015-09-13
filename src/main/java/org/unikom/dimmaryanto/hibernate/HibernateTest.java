@@ -22,8 +22,8 @@ public class HibernateTest {
 
         session.beginTransaction();
 
-        Query query = session.getNamedQuery("users.findById");
-        query.setInteger("uid", 22);
+        Query query = session.getNamedQuery("users.findByName");
+        query.setString("uname", "User 9");
 
         List<UserDetails> users = query.list();
 

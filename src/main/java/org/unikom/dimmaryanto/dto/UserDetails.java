@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 @NamedQuery(name = "users.findById", query = "from UserDetails where id = :uid")
+@NamedNativeQuery(name = "users.findByName", query = "select * from users where username = :uname", resultClass = UserDetails.class)
 public class UserDetails {
 
     @Id
