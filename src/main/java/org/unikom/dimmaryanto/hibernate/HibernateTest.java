@@ -19,8 +19,7 @@ public class HibernateTest {
         session.beginTransaction();
 
         UserDetails aUserDetails = session.get(UserDetails.class, 4);
-
-        System.out.println("Nama dari User id 4 adalah " + aUserDetails.getUsername());
+        session.delete(aUserDetails);
 
         session.beginTransaction().commit();
         session.close();
