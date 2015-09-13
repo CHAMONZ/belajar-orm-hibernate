@@ -19,7 +19,11 @@ public class HibernateTest {
         Vehicle aMotor = new Vehicle();
         aMotor.setVehicleName("Honda Beat");
 
-        aUser.setVehicleId(aMotor);
+        aUser.getVehicleId().add(aMotor);
+
+        Vehicle aMotor2 = new Vehicle();
+        aMotor2.setVehicleName("Honda CBR");
+        aUser.getVehicleId().add(aMotor2);
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
@@ -27,6 +31,7 @@ public class HibernateTest {
         session.beginTransaction();
         session.save(aUser);
         session.save(aMotor);
+        session.save(aMotor2);
         session.beginTransaction().commit();
         session.close();
         sessionFactory.close();

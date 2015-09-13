@@ -1,6 +1,8 @@
 package org.unikom.dimmaryanto.dto;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by dimmaryanto on 9/12/15.
@@ -15,15 +17,15 @@ public class UserDetails {
 
     private String username;
 
-    @OneToOne
-    @JoinColumn(name = "vehicle_id")
-    private Vehicle vehicleId;
+    @OneToMany
+    @JoinTable(name = "USER_VEHICLE", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "VEHICLE_ID"))
+    private Collection<Vehicle> vehicleId = new ArrayList<Vehicle>();
 
-    public Vehicle getVehicleId() {
+    public Collection<Vehicle> getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(Vehicle vehicleId) {
+    public void setVehicleId(Collection<Vehicle> vehicleId) {
         this.vehicleId = vehicleId;
     }
 
