@@ -23,13 +23,15 @@ public class HibernateTest {
         session.beginTransaction();
 
         //"from UserDetails" UserDetails -> bukan merupakan nama Table tetapi nama Object Class Entity
-        //"from UserDetails where id " id -> bukan merukanan nama column di dalam table tetapi nama property Class dalam Entity UserDetails
-        Query query = session.createQuery("from UserDetails where id > 10");
+        Query query = session.createQuery("from UserDetails");
+
+        query.setFirstResult(5);
+        query.setMaxResults(4);
+
         List<UserDetails> users = query.list();
 
         session.beginTransaction().commit();
         session.close();
-        sessionFactory.close();
 
 
         Iterator<UserDetails> iterator = users.iterator();
@@ -39,6 +41,7 @@ public class HibernateTest {
             UserDetails user = iterator.next();
             System.out.println("User ID : " + user.getId() + " and Username : " + user.getUsername());
         }
+        sessionFactory.close();
 
     }
 }
