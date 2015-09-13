@@ -4,6 +4,8 @@ package org.unikom.dimmaryanto.hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.unikom.dimmaryanto.dto.FourWheels;
+import org.unikom.dimmaryanto.dto.TwoWheels;
 import org.unikom.dimmaryanto.dto.UserDetails;
 import org.unikom.dimmaryanto.dto.Vehicle;
 
@@ -16,25 +18,26 @@ public class HibernateTest {
         aUser.setUsername("Riansyah Permana Putra");
 
 
-        Vehicle aMotor = new Vehicle();
-        aMotor.setVehicleName("Honda Beat");
+        Vehicle aVehicle = new Vehicle();
+        aVehicle.setVehicleName("Kendaraan");
 
-        aUser.getVehicleId().add(aMotor);
+        TwoWheels aMotoCicyle = new TwoWheels();
+        aMotoCicyle.setVehicleName("CBR 150R");
+        aMotoCicyle.setStiringHandle("2 roda");
 
-        Vehicle aMotor2 = new Vehicle();
-        aMotor2.setVehicleName("Honda CBR");
-        aUser.getVehicleId().add(aMotor2);
+        FourWheels aCar = new FourWheels();
+        aCar.setVehicleName("Honda Jazz");
+        aCar.setStiringWheels("4 roda");
 
-        aMotor.getUserList().add(aUser);
-        aMotor2.getUserList().add(aUser);
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
-        session.save(aUser);
-        session.save(aMotor);
-        session.save(aMotor2);
+        session.save(aVehicle);
+        session.save(aCar);
+        session.save(aMotoCicyle);
+
         session.beginTransaction().commit();
         session.close();
         sessionFactory.close();
