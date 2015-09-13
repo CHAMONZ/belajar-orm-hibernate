@@ -20,6 +20,8 @@
 
         <mapping class="org.unikom.dimmaryanto.dto.UserDetails"/>
         <mapping class="org.unikom.dimmaryanto.dto.Vehicle"/>
+        <mapping class="org.unikom.dimmaryanto.dto.TwoWheels"/>
+        <mapping class="org.unikom.dimmaryanto.dto.FourWheels"/>
 
     </session-factory>
 </hibernate-configuration>
