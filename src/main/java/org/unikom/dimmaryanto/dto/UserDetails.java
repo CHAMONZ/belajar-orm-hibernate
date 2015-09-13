@@ -15,7 +15,17 @@ public class UserDetails {
 
     private String username;
 
+    @OneToOne
+    @JoinColumn(name = "vehicle_id")
+    private Vehicle vehicleId;
 
+    public Vehicle getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(Vehicle vehicleId) {
+        this.vehicleId = vehicleId;
+    }
 
     public int getId() {
         return id;
