@@ -1,14 +1,13 @@
 package org.unikom.dimmaryanto.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by dimmaryanto on 9/12/15.
  */
 @Entity
+@Table(name = "users")
+@NamedQuery(name = "users.findById", query = "from UserDetails where id = :uid")
 public class UserDetails {
 
     @Id

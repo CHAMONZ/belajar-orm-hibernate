@@ -5,6 +5,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.unikom.dimmaryanto.dto.UserDetails;
 
 import java.util.Iterator;
 import java.util.List;
@@ -21,22 +22,21 @@ public class HibernateTest {
 
         session.beginTransaction();
 
-        //"from UserDetails" UserDetails -> bukan merupakan nama Table tetapi nama Object Class Entity
-        Query query = session.createQuery("from UserDetails");
+        Query query = session.getNamedQuery("users.findById");
+        query.setInteger("uid", 22);
 
-        List<String> users = query.list();
+        List<UserDetails> users = query.list();
 
-        session.beginTransaction().commit();
-        session.close();
-
-
-        Iterator<String> iterator = users.iterator();
+        Iterator<UserDetails> iterator = users.iterator();
 
         while (iterator.hasNext()) {
             //untuk mengambil object UserDetails
-            String user = iterator.next();
-            System.out.println("User ID : " + user);
+            UserDetails user = iterator.next();
+            System.out.println("User Name is " + user.getUsername() + " with id is " + user.getId());
         }
+
+        session.beginTransaction().commit();
+        session.close();
         sessionFactory.close();
 
     }
