@@ -1,14 +1,13 @@
 package org.unikom.dimmaryanto.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by dimmaryanto on 9/13/15.
  */
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "VIHECLE_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class Vehicle {
 
     @Id
