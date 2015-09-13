@@ -4,7 +4,6 @@ package org.unikom.dimmaryanto.hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.unikom.dimmaryanto.dto.Address;
 import org.unikom.dimmaryanto.dto.UserDetails;
 
 /**
@@ -16,20 +15,7 @@ public class HibernateTest {
 
         aUser.setUsername("Riansyah Permana Putra");
 
-        Address address = new Address();
-        address.setStreet("Jl.bukit indah no b8");
-        address.setState("Indonesia");
-        address.setCity("bandung");
-        address.setPincode("40524");
 
-        Address address1 = new Address();
-        address1.setStreet("JL.Cikutra");
-        address1.setState("Indonesia");
-        address1.setCity("bandung");
-        address1.setPincode("40526");
-
-        aUser.getListofAddress().add(address);
-        aUser.getListofAddress().add(address1);
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
